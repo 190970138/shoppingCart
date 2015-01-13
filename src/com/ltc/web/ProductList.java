@@ -51,15 +51,15 @@ public class ProductList extends HttpServlet {
 		out.print("						<tr>");
 		out.print("							<td width=\"5%\"></td>");
 		out.print("							");
-		out.print("          <td width=\"10%\"><a href=\"/shoppingCart/ProductList\"><img name=\"Image1\" border=\"0\" src=\"images/index.gif\" width=\"90\" height=\"36\"></a></td>");
+		out.print("          <td width=\"10%\"><a href=\"/shoppingCart/ProductList.do\"><img name=\"Image1\" border=\"0\" src=\"images/index.gif\" width=\"90\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/UserManage\"><img name=\"Image2\" border=\"0\" src=\"images/reg.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/UserManage.do\"><img name=\"Image2\" border=\"0\" src=\"images/reg.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/ShoppingCart\"><img name=\"Image4\" border=\"0\" src=\"images/cart.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/ShoppingCart.do\"><img name=\"Image4\" border=\"0\" src=\"images/cart.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/OrderList\"><img name=\"Image5\" border=\"0\" src=\"images/order.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/OrderList.do\"><img name=\"Image5\" border=\"0\" src=\"images/order.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/ProductList\"><img name=\"Image6\" border=\"0\" src=\"images/exit.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/ProductList.do\"><img name=\"Image6\" border=\"0\" src=\"images/exit.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.print("						</tr>");
 		out.print("					</table>");
 		out.print("				</td>");
@@ -119,13 +119,13 @@ public class ProductList extends HttpServlet {
 			out.print(i+1);
 			out.print("				</td>");
 			out.print("				");
-			out.print("    <td class=tablebody1 valign=\"middle\" width=\"60%\"> &nbsp;&nbsp;<a href=\"productDetail.html\">"+list.get(i).getName()+"</a> ");
+			out.print("    <td class=tablebody1 valign=\"middle\" width=\"60%\"> &nbsp;&nbsp;<a href=\"ProductDetail.do\">"+list.get(i).getName()+"</a> ");
 			out.print("    </td>");
 			out.print("				<td class=tablebody2 valign=\"middle\" align=\"center\" width=\"8%\">");
 			out.print(list.get(i).getBasePrice());
 			out.print("				</td>");
 			out.print("				");
-			out.print("    <td class=tablebody1 valign=\"middle\" align=\"center\" width=\"24%\"> <a href=\"/shoppingCart/ShoppingCart\"><img border=\"0\" src=\"images/car_new.gif\" width=\"97\" height=\"18\"></a> ");
+			out.print("    <td class=tablebody1 valign=\"middle\" align=\"center\" width=\"24%\"> <a href=\"/shoppingCart/ShoppingCart.do\"><img border=\"0\" src=\"images/car_new.gif\" width=\"97\" height=\"18\"></a> ");
 			out.print("    </td>");
 			out.print("			</tr>   ");
 		}

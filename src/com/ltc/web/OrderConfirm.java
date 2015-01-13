@@ -97,7 +97,7 @@ public class OrderConfirm extends HttpServlet {
 		out.println("						<font color=\"#ffffff\" size=\"2pt\">");
 		out.println("							<b>用户信息</b>");
 		out.println("						</font>");
-		out.println("						<input type=\"button\" value=\"修改\" onclick=\"javascript:window.location='../user/userModify.html';\">");
+		out.println("						<input type=\"button\" value=\"修改\" onclick=\"javascript:window.location='UserModify.do';\">");
 		out.println("				</td>");
 		out.println("			</tr>");
 		out.println("			<tr>");
@@ -160,7 +160,7 @@ public class OrderConfirm extends HttpServlet {
 		out.println("					<font color=\"#ffffff\" size=\"2pt\">");
 		out.println("							<b>商品购物清单</b>");
 		out.println("					</font>");
-		out.println("					<input type=\"button\" value=\"修改\" onclick=\"javascript:window.location='../order/orderList.html';\" >");
+		out.println("					<input type=\"button\" value=\"修改\" onclick=\"javascript:window.location='OrderList.do';\" >");
 		out.println("				</td>");
 		out.println("			</tr>");
 		out.println("			<tr>");
@@ -189,7 +189,7 @@ public class OrderConfirm extends HttpServlet {
 		out.println("			<tr>");
 		out.println("				<td width=\"65%\" align=\"center\">");
 		out.println("					<b>请认真检查以上订单信息，确认无误后，点击&nbsp;→</b>");
-		out.println("					<a href=\"../order/orderList.html\"><img border=\"0\" src=\"images/submit.gif\"></a>");
+		out.println("					<a href=\"/shoppingCart/OrderList.do\"><img border=\"0\" src=\"images/submit.gif\"></a>");
 		out.println("				</td>");
 		out.println("			</tr>");
 		out.println("		</table>");
