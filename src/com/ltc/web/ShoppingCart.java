@@ -20,7 +20,6 @@ public class ShoppingCart extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		resp.setCharacterEncoding("utf-8");
 		PrintWriter out=resp.getWriter();
 		

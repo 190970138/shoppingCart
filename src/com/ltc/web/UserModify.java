@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ltc.pojo.User;
-import com.ltc.serviceImpl.UserServiceImpl;
 import com.ltc.service.UserService;
+import com.ltc.serviceImpl.UserServiceImpl;
 
 public class UserModify extends HttpServlet 
 {

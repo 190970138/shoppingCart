@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ltc.pojo.User;
-import com.ltc.service.UserService;
-import com.ltc.serviceImpl.UserServiceImpl;
 
 public class UserManage extends HttpServlet {
 
@@ -24,8 +22,10 @@ public class UserManage extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		List<User> userManage = (List<User>)req.getAttribute("userManage");
 		resp.setCharacterEncoding("utf-8");
 		PrintWriter out = resp.getWriter();
+
 		//out.println("Hello Chen");
 		
 		out.println("<html>");
@@ -113,19 +113,19 @@ public class UserManage extends HttpServlet {
 		out.println("				</td>");
 		out.println("			</tr>");
 		
-		UserService userService =new UserServiceImpl();
-		List<User> list=userService.getAllUsers();
+//		UserService userService =new UserServiceImpl();
+//		List<User> UserManage=userService.getAllUsers();
 		
-		for(int i=0;i<list.size();i++)
+		for(int i=0;i<userManage.size();i++)
 		{
 			out.println("			<tr>");
 			out.println("				<td class=tablebody2 valign=\"middle\" align=\"center\" height=\"25\"  width=\"35%\">");
 			out.println("					");
-			out.println("						<b>"+list.get(i).getUserid()+"</b>");
+			out.println("						<b>"+userManage.get(i).getUserid()+"</b>");
 			out.println("				</td>");
 			out.println("				<td class=tablebody2 valign=\"middle\" align=\"center\" height=\"25\"  width=\"35%\">");
 			out.println("					");
-			out.println("						<b>"+list.get(i).getPassWord()+"</b>");
+			out.println("						<b>"+userManage.get(i).getPassWord()+"</b>");
 			out.println("				</td>");
 			out.println("				<td class=tablebody2 valign=\"middle\" align=\"center\" height=\"25\"  width=\"35%\">");
 			out.println("					");
