@@ -21,7 +21,7 @@ public class Login extends HttpServlet {
 			throws ServletException, IOException {
 		resp.setCharacterEncoding("utf-8");
 		PrintWriter out = resp.getWriter();
-		//out.println("Hello Chen");
+		//out.println("Hello S-Cheney");
 		
 		out.println("<html>");
 		out.println("	<head>");
