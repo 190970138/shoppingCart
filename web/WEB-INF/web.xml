@@ -100,6 +100,15 @@
   </servlet-mapping>
   
   <servlet>
+  <servlet-name>ErrorServlet</servlet-name>
+  <servlet-class>com.ltc.web.ErrorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>ErrorServlet</servlet-name>
+  <url-pattern>/error</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
   <servlet-name>Controller</servlet-name>
   <servlet-class>com.ltc.controller.Controller</servlet-class>
   </servlet>

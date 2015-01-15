@@ -37,10 +37,30 @@ public class Controller extends HttpServlet {
 				
 				getServletContext().getRequestDispatcher("/UserManage").forward(req, resp);
 			} catch (Exception e){
+				getServletContext().getRequestDispatcher("/error").forward(req, resp);
 				req.setAttribute("message", e.getMessage());	
 			}			
 		}
 		
+		else if("/toUserModify".equals(path))
+		{
+			try{
+				UserService userService = new UserServiceImpl();
+				User user = userService.getUserInfoByID("admin");
+				
+				req.setAttribute("user", user);
+				
+				getServletContext().getRequestDispatcher("/UserModify").forward(req, resp);
+			} catch (Exception e){
+				getServletContext().getRequestDispatcher("/error").forward(req, resp);
+				req.setAttribute("message", e.getMessage());	
+			}
+		}
+		
+		else if("/toUserRegister".equals(path))
+		{
+			getServletContext().getRequestDispatcher("/UserRegister").forward(req, resp);
+		}
 		
 		else{
 			resp.sendError(resp.SC_NOT_FOUND);
