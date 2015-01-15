@@ -147,8 +147,15 @@ public class Controller extends HttpServlet {
 				req.setAttribute("message", e.getMessage());
 			}
 		}
+		else if("/toLogin".equals(path)){
+			getServletContext().getRequestDispatcher("/Login").forward(req, resp);
+		}
+		else if("/toOrderConfirm".equals(path)){
+			getServletContext().getRequestDispatcher("/OrderConfirm").forward(req, resp);
+		}
 		
-		else{
+		
+		else {
 			resp.sendError(resp.SC_NOT_FOUND);
 		}			
 
