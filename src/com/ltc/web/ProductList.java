@@ -109,8 +109,8 @@ public class ProductList extends HttpServlet {
 		out.print("				</td>");
 		out.print("			</tr>");
 		
-		ProductService productService=new ProductServiceImpl();
-		List<Product> list = productService.getAllProducts();
+		
+		List<Product> list = (List<Product>) req.getAttribute("list");
 		
 		for(int i=0;i<list.size();i++)
 		{

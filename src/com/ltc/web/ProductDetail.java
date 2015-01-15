@@ -17,34 +17,12 @@ public class ProductDetail extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		try{
-			ProductService productinfoservice = new ProductServiceImpl();
-			
-			Product productinfo = productinfoservice.getProductInfoById("2");
-			dooo(resp,productinfo);
-
-		} catch (Exception e){
-			toError(resp,e.getMessage());
-		}
 		//doPost(req, resp);
+		Product productinfo=(Product) req.getAttribute("productinfo");
+		dooo(resp,productinfo);
 	}
 
-	private void toError(HttpServletResponse resp, String message) throws IOException {
-		PrintWriter out = resp.getWriter();
-		
-		out.println("<html>");
-		out.println("<head>");
-		out.println("	<title>Error</title>");
-		out.println("</head>");
-		out.println("<body>");
-		out.println("	<h2 align=\"center\">Error</h2>");
-		out.println("	<hr>");
-		out.println("	System Error," + message + "!");
-		out.println("</body>");
-		out.println("</html>");
-		
-		out.close();
-	}
+
 	
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)

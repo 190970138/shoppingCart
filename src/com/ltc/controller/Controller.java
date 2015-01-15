@@ -8,8 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ltc.pojo.Product;
 import com.ltc.pojo.User;
+import com.ltc.service.ProductService;
 import com.ltc.service.UserService;
+import com.ltc.serviceImpl.ProductServiceImpl;
 import com.ltc.serviceImpl.UserServiceImpl;
 
 public class Controller extends HttpServlet {
@@ -62,11 +65,38 @@ public class Controller extends HttpServlet {
 			getServletContext().getRequestDispatcher("/UserRegister").forward(req, resp);
 		}
 		
-		else{
-			resp.sendError(resp.SC_NOT_FOUND);
+		else if("/toProductDetail".equals(path))
+		{
+			try{
+				ProductService productinfoservice = new ProductServiceImpl();
+				
+				Product productinfo = productinfoservice.getProductInfoById("2");
+				
+				req.setAttribute("productinfo", productinfo);
+				getServletContext().getRequestDispatcher("/ProductDetail").forward(req, resp);
+			} catch (Exception e){
+				getServletContext().getRequestDispatcher("/error").forward(req, resp);
+				req.setAttribute("message", e.getMessage());
+			}
 		}
 		
+		else if("/toProductList".equals(path))
+		{
+			try{
+				ProductService productService=new ProductServiceImpl();
+				List<Product> list  = productService.getAllProducts();
+				
+				req.setAttribute("list", list);
+				getServletContext().getRequestDispatcher("/ProductList").forward(req, resp);
+			} catch (Exception e){
+				getServletContext().getRequestDispatcher("/error").forward(req, resp);
+				req.setAttribute("message", e.getMessage());
+			}
+		}
 		
+		else{
+			resp.sendError(resp.SC_NOT_FOUND);
+		}			
 
 	}
 
