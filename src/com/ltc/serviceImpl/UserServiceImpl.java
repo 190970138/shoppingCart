@@ -95,7 +95,9 @@ public class UserServiceImpl implements UserService {
 			rs = stmt.executeQuery(sql);
 			rs.next();
 			//System.out.println(rs.next());
-			payWay=rs.getString("paystyle");
+			
+//			payWay=rs.getString("paystyle");	fixed by S-C,
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			

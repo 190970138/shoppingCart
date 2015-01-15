@@ -10,25 +10,79 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ltc.pojo.Product;
 import com.ltc.pojo.User;
+import com.ltc.service.OrdersService;
 import com.ltc.service.ProductService;
 import com.ltc.service.UserService;
+import com.ltc.serviceImpl.OrdersServiceImpl;
 import com.ltc.serviceImpl.ProductServiceImpl;
 import com.ltc.serviceImpl.UserServiceImpl;
 
 public class Controller extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
 		String path = req.getServletPath();
 		
 		path = path.substring(0, path.indexOf("."));
 		
-		if("/toShoppingCart".equals(path)){     //ShoppingCart
+		if("/toOrderList".equals(path)){
+			try{
+
+				OrdersService ordersService = new OrdersServiceImpl();
+				
+				List orderList = ordersService.getOrdersList();
+				
+				req.setAttribute("orderList", orderList);
+				
+				getServletContext().getRequestDispatcher("/OrderList").forward(req, resp);
+			} catch (Exception e){
+				req.setAttribute("message", e.getMessage());
+
+			}			
+		}
+		
+		
+		else if("/toOrderDetail".equals(path))
+		{
+			UserService userService=new UserServiceImpl();
+			User user=userService.getUsersById("host");
+			String payWay=userService.getPayWayById("1");
+			req.setAttribute("user", user);
+			req.setAttribute("payWay", payWay);
+			getServletContext().getRequestDispatcher("/OrderDetail").forward(req, resp);
+		}
+		
+		else if("/toShoppingCart".equals(path)){     //ShoppingCart
 				getServletContext().getRequestDispatcher("/ShoppingCart").forward(req, resp);			
 		}
 		
+		else if("/toOrderList".equals(path)){
+			try{
+
+				OrdersService ordersService = new OrdersServiceImpl();
+				
+				List orderList = ordersService.getOrdersList();
+				
+				req.setAttribute("orderList", orderList);
+				
+				getServletContext().getRequestDispatcher("/OrderList").forward(req, resp);
+			} catch (Exception e){
+				req.setAttribute("message", e.getMessage());
+
+			}			
+		}
+		
+		
+		else if("/toOrderDetail".equals(path))
+		{
+			UserService userService=new UserServiceImpl();
+			User user=userService.getUsersById("host");
+			String payWay=userService.getPayWayById("1");
+			req.setAttribute("user", user);
+			req.setAttribute("payWay", payWay);
+			getServletContext().getRequestDispatcher("/OrderDetail").forward(req, resp);
+		}
 		
 		else if("/toUserManage".equals(path))   //UserMange
 		{

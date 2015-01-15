@@ -11,48 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ltc.pojo.Orders;
-import com.ltc.service.OrdersService;
-import com.ltc.serviceImpl.OrdersServiceImpl;
 
 public class OrderList extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		try{
-			OrdersService ordersService = new OrdersServiceImpl();
-			
-//		    OrdersService ordersService = ServiceFactory.getOrdersService();
-			
-			List ordersList = ordersService.getOrdersList();
-
-			toOrdersList(resp, ordersList);
-		} catch (Exception e){
-			toError(resp,e.getMessage());
-		}
-
-	
-	}
-	
-	private void toError(HttpServletResponse resp, String message) throws IOException {
-		PrintWriter out = resp.getWriter();
-		
-		out.println("<html>");
-		out.println("<head>");
-		out.println("	<title>Error</title>");
-		out.println("</head>");
-		out.println("<body>");
-		out.println("	<h2 align=\"center\">Error</h2>");
-		out.println("	<hr>");
-		out.println("	System Error," + message + "!");
-		out.println("</body>");
-		out.println("</html>");
-		
-		out.close();
-	}
-	
-	private void toOrdersList(HttpServletResponse resp, List ordersList)
-			throws IOException {
+		List orderList = (List)req.getAttribute("orderList");
 		int i = 1;
 		resp.setCharacterEncoding("utf-8");
 		PrintWriter out = resp.getWriter();
@@ -80,15 +45,15 @@ public class OrderList extends HttpServlet {
 		out.println("						<tr>");
 		out.println("							<td width=\"5%\"></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/toProductList.do\"><img name=\"Image1\" border=\"0\" src=\"images/index.gif\" width=\"90\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/ProductList.do\"><img name=\"Image1\" border=\"0\" src=\"images/index.gif\" width=\"90\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/toUserManage.do\"><img name=\"Image2\" border=\"0\" src=\"images/reg.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/UserManage.do\"><img name=\"Image2\" border=\"0\" src=\"images/reg.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/toShoppingCart.do\"><img name=\"Image4\" border=\"0\" src=\"images/cart.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/ShoppingCart.do\"><img name=\"Image4\" border=\"0\" src=\"images/cart.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/toOrderList.do\"><img name=\"Image5\" border=\"0\" src=\"images/order.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/OrderList.do\"><img name=\"Image5\" border=\"0\" src=\"images/order.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/toProductList.do\"><img name=\"Image6\" border=\"0\" src=\"images/exit.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/ProductList.do\"><img name=\"Image6\" border=\"0\" src=\"images/exit.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("						</tr>");
 		out.println("					</table>");
 		out.println("				</td>");
@@ -124,7 +89,7 @@ public class OrderList extends HttpServlet {
 		out.println("				<td valign=middle align=center height=25 background=\"images/bg2.gif\"><font color=\"#ffffff\"><b>²Ù×÷</b></font></td>");
 		out.println("			</tr>");
 		
-		for(Iterator<Orders> it = ordersList.iterator();it.hasNext();){
+		for(Iterator<Orders> it = orderList.iterator();it.hasNext();){
 			Orders orders = it.next();
 			out.println("			<tr>");
 			out.println("				<td class=tablebody2 valign=middle align=center>"+i+"</td>");
@@ -165,12 +130,34 @@ public class OrderList extends HttpServlet {
 		out.println("</html>");
 
 		out.close();
+
 	}
+	
+//	private void toError(HttpServletResponse resp, String message) throws IOException {
+//		PrintWriter out = resp.getWriter();
+//		
+//		out.println("<html>");
+//		out.println("<head>");
+//		out.println("	<title>Error</title>");
+//		out.println("</head>");
+//		out.println("<body>");
+//		out.println("	<h2 align=\"center\">Error</h2>");
+//		out.println("	<hr>");
+//		out.println("	System Error," + message + "!");
+//		out.println("</body>");
+//		out.println("</html>");
+//		
+//		out.close();
+//	}
+//	
+//	private void toOrdersList(HttpServletResponse resp, List ordersList)
+//			throws IOException {
+//
+//	}
 	
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(req,resp);
 		
 	}

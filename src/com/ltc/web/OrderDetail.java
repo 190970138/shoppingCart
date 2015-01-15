@@ -12,17 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.ltc.pojo.Product;
 import com.ltc.pojo.User;
 import com.ltc.service.ProductService;
-import com.ltc.service.UserService;
 import com.ltc.serviceImpl.ProductServiceImpl;
-import com.ltc.serviceImpl.UserServiceImpl;
 
 public class OrderDetail extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		User user = (User)req.getAttribute("user");
+		User payWay = (User)req.getAttribute("payWay");
 		resp.setCharacterEncoding("utf-8");
-		// TODO Auto-generated method stub
 		
 	PrintWriter out=resp.getWriter();
 	
@@ -53,15 +52,15 @@ public class OrderDetail extends HttpServlet {
 	out.println("						<tr>");
 	out.println("							<td width=\"5%\"></td>");
 	out.println("							");
-	out.println("         <td width=\"10%\"><a href=\"/shoppingCart/toProductList.do\"><img name=\"Image1\" border=\"0\" src=\"images/index.gif\" width=\"90\" height=\"36\"></a></td>");
+	out.println("         <td width=\"10%\"><a href=\"/shoppingCart/ProductList.do\"><img name=\"Image1\" border=\"0\" src=\"images/index.gif\" width=\"90\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/toUserManage.do\"><img name=\"Image2\" border=\"0\" src=\"images/reg.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/UserManage.do\"><img name=\"Image2\" border=\"0\" src=\"images/reg.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/toShoppingCart.do\"><img name=\"Image4\" border=\"0\" src=\"images/cart.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/ShoppingCart.do\"><img name=\"Image4\" border=\"0\" src=\"images/cart.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/toOrderList.do\"><img name=\"Image5\" border=\"0\" src=\"images/order.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/OrderList.do\"><img name=\"Image5\" border=\"0\" src=\"images/order.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/toProductList.do\"><img name=\"Image6\" border=\"0\" src=\"images/exit.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/ProductList.do\"><img name=\"Image6\" border=\"0\" src=\"images/exit.gif\" width=\"92\" height=\"36\"></a></td>");
 	out.println("						</tr>");
 	out.println("					</table>");
 	out.println("				</td>");
@@ -100,8 +99,8 @@ public class OrderDetail extends HttpServlet {
 	out.println("			</tr>");
 	out.println("			");
 	
-	UserService userService=new UserServiceImpl();
-	User user=userService.getUsersById("host");
+//	UserService userService=new UserServiceImpl();
+//	User user=userService.getUsersById("host");
 	
 	out.println("			<tr>");
 	out.println("				<td class=tablebody2 valign=\"middle\" align=\"right\" width=\"40%\">");
@@ -179,7 +178,7 @@ public class OrderDetail extends HttpServlet {
 	out.println("			</tr>");
 	out.println("			");
 	
-	String payWay=userService.getPayWayById("1");
+//	String payWay=userService.getPayWayById("1");
 	
 	
 	out.println("			<tr>");
