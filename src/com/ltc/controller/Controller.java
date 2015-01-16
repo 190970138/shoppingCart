@@ -39,7 +39,7 @@ public class Controller extends HttpServlet {
 				getServletContext().getRequestDispatcher("/OrderList").forward(req, resp);
 			} catch (Exception e){
 				req.setAttribute("message", e.getMessage());
-
+				//getServletContext().getRequestDispatcher("/error").forward(req, resp);
 			}			
 		}
 		
@@ -56,24 +56,7 @@ public class Controller extends HttpServlet {
 		
 		else if("/toShoppingCart".equals(path)){     //ShoppingCart
 				getServletContext().getRequestDispatcher("/ShoppingCart").forward(req, resp);			
-		}
-		
-		else if("/toOrderList".equals(path)){
-			try{
-
-				OrdersService ordersService =ServiceFactory.getOrdersService() ;
-				
-				List orderList = ordersService.getOrdersList();
-				
-				req.setAttribute("orderList", orderList);
-				
-				getServletContext().getRequestDispatcher("/OrderList").forward(req, resp);
-			} catch (Exception e){
-				req.setAttribute("message", e.getMessage());
-
-			}			
-		}
-		
+		}		
 		
 		else if("/toOrderDetail".equals(path))
 		{

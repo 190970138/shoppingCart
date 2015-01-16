@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class ConnectionFactory {
 	private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
 
-	private static final String DB_URL = "jdbc:mysql://localhost:3306/test";
+	private static final String DB_URL = "jdbc:mysql://localhost:3306/gwap";
 	
 	private static final String DB_USER = "root";
 

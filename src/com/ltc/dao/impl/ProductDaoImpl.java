@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.ltc.dao.ProductDao;
 import com.ltc.pojo.Product;
+import com.ltc.util.ConnectionFactory;
 
 public class ProductDaoImpl implements ProductDao {
 
@@ -24,9 +25,7 @@ public class ProductDaoImpl implements ProductDao {
 		ResultSet rs = null;
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gwap","root","");
+			conn=ConnectionFactory.getConnection();
 			
 			stmt = conn.createStatement();
 			String sql="select amount,name,basePrice from orderline inner join "
@@ -74,9 +73,7 @@ public class ProductDaoImpl implements ProductDao {
 		ResultSet rs = null;
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gwap","root","");
+			conn=ConnectionFactory.getConnection();
 			
 			stmt = conn.createStatement();
 			String sql="select * from product";
@@ -127,8 +124,7 @@ public class ProductDaoImpl implements ProductDao {
 		ResultSet rs = null;
 		
 		try{
-			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gwap","root","");
+			conn=ConnectionFactory.getConnection();
 			stmt = conn.createStatement();
 			String sql="select product.*,category.description des from product,category where category.categoryid=product.categoryid and productid = '"+productid+"'";
 			//stmt1 = conn.createStatement();

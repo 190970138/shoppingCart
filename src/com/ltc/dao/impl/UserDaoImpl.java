@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.ltc.dao.UserDao;
 import com.ltc.pojo.User;
+import com.ltc.util.ConnectionFactory;
 
 public class UserDaoImpl implements UserDao {
 	
@@ -23,10 +24,7 @@ public class UserDaoImpl implements UserDao {
 		ResultSet rs = null;
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gwap","root","");
-			
+			conn=ConnectionFactory.getConnection();
 			stmt = conn.createStatement();
 			String sql="select users.userid,password,street1,street2,city,province,coun"
 			+"try,zip,email,homephone,cellphone,officephone from users inner join contactinfo"
@@ -82,10 +80,7 @@ public class UserDaoImpl implements UserDao {
 		ResultSet rs = null;
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gwap","root","");
-			
+			conn=ConnectionFactory.getConnection();
 			stmt = conn.createStatement();
 			String sql="select paystyle"
 			+" from orders inner join payway"
@@ -130,10 +125,7 @@ public class UserDaoImpl implements UserDao {
 		ResultSet rs = null;
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gwap","root","");
-			
+			conn=ConnectionFactory.getConnection();
 			stmt = conn.createStatement();
 			String sql="select password,contactinfo.* from users inner join contactinfo on users.userid=contactinfo.userid";
 			rs = stmt.executeQuery(sql);
@@ -154,9 +146,7 @@ public class UserDaoImpl implements UserDao {
 				user.setHomephone(rs.getString("homephone"));
 				user.setCellphone(rs.getString("cellphone"));
 				user.setOfficephone(rs.getString("officephone"));
-				
-				
-				
+								
 				userList.add(user);
 				
 			}
@@ -193,10 +183,7 @@ public class UserDaoImpl implements UserDao {
 		ResultSet rs = null;
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gwap","root","");
-			
+			conn=ConnectionFactory.getConnection();
 			stmt = conn.createStatement();
 			
 			rs = stmt.executeQuery("select users.userid,password,country,province,city,street1,street2,zip,homephone,officephone,cellphone,email from users,contactinfo where users.userid='"+ userid +"' and users.userid=contactinfo.userid");
