@@ -16,6 +16,7 @@ import com.ltc.service.UserService;
 import com.ltc.serviceImpl.OrdersServiceImpl;
 import com.ltc.serviceImpl.ProductServiceImpl;
 import com.ltc.serviceImpl.UserServiceImpl;
+import com.ltc.util.ServiceFactory;
 
 public class Controller extends HttpServlet {
 
@@ -29,7 +30,7 @@ public class Controller extends HttpServlet {
 		if("/toOrderList".equals(path)){
 			try{
 
-				OrdersService ordersService = new OrdersServiceImpl();
+				OrdersService ordersService = ServiceFactory.getOrdersService();
 				
 				List orderList = ordersService.getOrdersList();
 				
@@ -45,7 +46,7 @@ public class Controller extends HttpServlet {
 		
 		else if("/toOrderDetail".equals(path))
 		{
-			UserService userService=new UserServiceImpl();
+			UserService userService=ServiceFactory.getUserService();
 			User user=userService.getUsersById("host");
 			String payWay=userService.getPayWayById("1");
 			req.setAttribute("user", user);
@@ -60,7 +61,7 @@ public class Controller extends HttpServlet {
 		else if("/toOrderList".equals(path)){
 			try{
 
-				OrdersService ordersService = new OrdersServiceImpl();
+				OrdersService ordersService =ServiceFactory.getOrdersService() ;
 				
 				List orderList = ordersService.getOrdersList();
 				
@@ -76,7 +77,7 @@ public class Controller extends HttpServlet {
 		
 		else if("/toOrderDetail".equals(path))
 		{
-			UserService userService=new UserServiceImpl();
+			UserService userService=ServiceFactory.getUserService();
 			User user=userService.getUsersById("host");
 			String payWay=userService.getPayWayById("1");
 			req.setAttribute("user", user);
@@ -87,7 +88,7 @@ public class Controller extends HttpServlet {
 		else if("/toUserManage".equals(path))   //UserMange
 		{
 			try{
-				UserService userService =new UserServiceImpl();
+				UserService userService =ServiceFactory.getUserService();
 				List<User> userManage=userService.getAllUsers();
 				
 				req.setAttribute("userManage", userManage);
@@ -102,7 +103,7 @@ public class Controller extends HttpServlet {
 		else if("/toUserModify".equals(path))
 		{
 			try{
-				UserService userService = new UserServiceImpl();
+				UserService userService = ServiceFactory.getUserService();
 				User user = userService.getUserInfoByID("admin");
 				
 				req.setAttribute("user", user);
@@ -122,7 +123,7 @@ public class Controller extends HttpServlet {
 		else if("/toProductDetail".equals(path))
 		{
 			try{
-				ProductService productinfoservice = new ProductServiceImpl();
+				ProductService productinfoservice = ServiceFactory.getProductService();
 				
 				Product productinfo = productinfoservice.getProductInfoById("2");
 				
@@ -137,7 +138,7 @@ public class Controller extends HttpServlet {
 		else if("/toProductList".equals(path))
 		{
 			try{
-				ProductService productService=new ProductServiceImpl();
+				ProductService productService=ServiceFactory.getProductService();
 				List<Product> list  = productService.getAllProducts();
 				
 				req.setAttribute("list", list);
