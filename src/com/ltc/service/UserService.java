@@ -10,4 +10,5 @@ public interface UserService {
 	public String getPayWayById(String id);
 	public List getAllUsers();
 	public User getUserInfoByID(String userid);
+	public boolean createNewUser(User user);
 }

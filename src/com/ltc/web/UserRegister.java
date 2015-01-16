@@ -29,7 +29,7 @@ public class UserRegister extends HttpServlet{
 		out.println("		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">");
 		out.println("		<meta name=\"description\" content=\"达内电子商务门户\">");
 		out.println("		<link href=\"css/tarena.css\" rel=stylesheet>");
-		out.println("		<script language=\"javascript\" src=\"uservalidate.js\">");
+//		out.println("		<script language=\"javascript\" src=\"uservalidate.js\">");
 		out.println("	       </script>");
 		out.println("	</head>");
 		out.println("	<body topmargin=\"0\" leftmargin=\"0\" rightmargin=\"0\" bottommargin=\"0\">");
@@ -52,13 +52,13 @@ public class UserRegister extends HttpServlet{
 		out.println("							");
 		out.println("							<td width=\"10%\"><a href=\"/shoppingCart/toProductList.do\"><img name=\"Image1\" border=\"0\" src=\"images/index.gif\" width=\"90\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/toUserManage.do\"><img name=\"Image2\" border=\"0\" src=\"images/reg.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\""+getServletContext().getContextPath()+"/toUserManage.do\"><img name=\"Image2\" border=\"0\" src=\"images/reg.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/toShoppingCart.do\"><img name=\"Image4\" border=\"0\" src=\"images/cart.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\""+getServletContext().getContextPath()+"/toShoppingCart.do\"><img name=\"Image4\" border=\"0\" src=\"images/cart.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/toOrderList.do\"><img name=\"Image5\" border=\"0\" src=\"images/order.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\""+getServletContext().getContextPath()+"/toOrderList.do\"><img name=\"Image5\" border=\"0\" src=\"images/order.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"/shoppingCart/toProductList.do\"><img name=\"Image6\" border=\"0\" src=\"images/exit.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\""+getServletContext().getContextPath()+"/toProductList.do\"><img name=\"Image6\" border=\"0\" src=\"images/exit.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("						</tr>");
 		out.println("					</table>");
 		out.println("				</td>");
@@ -87,7 +87,7 @@ public class UserRegister extends HttpServlet{
 		out.println("");
 		out.println("		</table>");
 		out.println("		<br>");
-		out.println("		<form method=\"post\" name=\"reg\" onsubmit=\"return validate(this)\" action=\"../product/productList.html\">");
+		out.println("		<form method=\"post\" name=\"reg\" onsubmit=\"return validate(this)\" action=\""+getServletContext().getContextPath()+"/doUserRegister.do\">");
 		out.println("			<table class=\"tableborder1\" id=\"table1\" align=\"center\" cellpadding=\"3\" cellspacing=\"1\">");
 		out.println("			<tbody>");
 		out.println("			<tr>");
@@ -240,7 +240,8 @@ public class UserRegister extends HttpServlet{
 		out.println("			");
 		out.println("			<tr>");
 		out.println("				<td class=\"tablebody2\" colspan=\"2\" align=\"center\" valign=\"middle\">");
-		out.println("				<input value=\"注 册\" type=\"submit\" onclick=\"ProductList.do\">&nbsp;&nbsp;");
+//		out.println("				<input value=\"注 册\" type=\"submit\">&nbsp;&nbsp;");
+		out.println("				<input value=\"注 册\" type=\"submit\">&nbsp;&nbsp;");
 		out.println("				<input value=\"清 除\" type=\"reset\"></td>");
 		out.println("");
 		out.println("			</tr>");

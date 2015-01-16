@@ -138,6 +138,31 @@ public class Controller extends HttpServlet {
 			getServletContext().getRequestDispatcher("/OrderConfirm").forward(req, resp);
 		}
 		
+		else if("/doUserRegister".equals(path)){
+			//处理用户注册
+			try{
+				User user=new User();
+				UserService userService = ServiceFactory.getUserService();
+				//用户信息封装
+				user.setUserid(req.getParameter("userid"));
+				user.setPassWord(req.getParameter("password"));
+				user.setCountry(req.getParameter("country"));
+				user.setProvince(req.getParameter("province"));
+				user.setStreet1(req.getParameter("street1"));
+				user.setStreet2(req.getParameter("street2"));
+				user.setZip(req.getParameter("zip"));
+				user.setHomephone(req.getParameter("homephone"));
+				user.setOfficephone(req.getParameter("officephone"));
+				user.setCellphone(req.getParameter("cellphone"));
+				user.setEmail(req.getParameter("email"));
+		
+				userService.createNewUser(user);
+				
+			}catch(Exception e)
+			{
+				
+			}			
+		}
 		
 		else {
 			resp.sendError(resp.SC_NOT_FOUND);

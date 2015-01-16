@@ -37,6 +37,13 @@ public class UserServiceImpl implements UserService {
 		return DaoFactory.getUserDao().getUserInfoByID(userid);
 	}
 
+	@Override
+	public boolean createNewUser(User user) {
+		// TODO Auto-generated method stub
+		
+		return DaoFactory.getUserDao().createNewUser(user);
+	}
+
 	
 
 }

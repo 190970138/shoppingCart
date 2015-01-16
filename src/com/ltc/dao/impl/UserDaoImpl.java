@@ -224,4 +224,10 @@ public class UserDaoImpl implements UserDao {
 		
 		return user;
 	}
+
+	@Override
+	public boolean createNewUser(User user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
