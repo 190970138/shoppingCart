@@ -140,27 +140,29 @@ public class Controller extends HttpServlet {
 		
 		else if("/doUserRegister".equals(path)){
 			//处理用户注册
+			req.setCharacterEncoding("utf-8");
 			try{
 				User user=new User();
 				UserService userService = ServiceFactory.getUserService();
 				//用户信息封装
-				user.setUserid(req.getParameter("userid"));
-				user.setPassWord(req.getParameter("password"));
-				user.setCountry(req.getParameter("country"));
-				user.setProvince(req.getParameter("province"));
-				user.setStreet1(req.getParameter("street1"));
-				user.setStreet2(req.getParameter("street2"));
-				user.setZip(req.getParameter("zip"));
-				user.setHomephone(req.getParameter("homephone"));
-				user.setOfficephone(req.getParameter("officephone"));
-				user.setCellphone(req.getParameter("cellphone"));
-				user.setEmail(req.getParameter("email"));
-		
+					user.setUserid(req.getParameter("userid"));
+					user.setPassWord(req.getParameter("password"));
+					user.setCountry(req.getParameter("country"));
+					user.setProvince(req.getParameter("province"));
+					user.setCity(req.getParameter("city"));
+					user.setStreet1(req.getParameter("street1"));
+					user.setStreet2(req.getParameter("street2"));
+					user.setZip(req.getParameter("zip"));
+					user.setHomephone(req.getParameter("homephone"));
+					user.setOfficephone(req.getParameter("officephone"));
+					user.setCellphone(req.getParameter("cellphone"));
+					user.setEmail(req.getParameter("email"));
 				userService.createNewUser(user);
-				
+				getServletContext().getRequestDispatcher("/toProductList.do").forward(req, resp);
 			}catch(Exception e)
 			{
-				
+				getServletContext().getRequestDispatcher("/error").forward(req, resp);
+				req.setAttribute("message", e.getMessage());
 			}			
 		}
 		

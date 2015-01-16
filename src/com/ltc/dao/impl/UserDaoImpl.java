@@ -227,7 +227,70 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public boolean createNewUser(User user) {
-		// TODO Auto-generated method stub
+		
+		Connection conn = null;
+		
+		java.sql.Statement stmt = null;
+		
+		try {
+			conn=ConnectionFactory.getConnection();
+			stmt = conn.createStatement();
+			String sql="insert into users values('"
+					+user.getUserid()+"','"+user.getPassWord()+"')";
+			stmt.executeUpdate(sql);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			throw new RuntimeException("error when insert user ",e);
+		} finally {
+			try {
+				stmt.close();
+				conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+				
+				throw new RuntimeException("error when insert user ",e);
+			}
+		}
+		
+		addUserInfo(user);
+		
 		return false;
+	}
+
+	@Override
+	public void addUserInfo(User user) {
+		// TODO Auto-generated method stub
+		Connection conn = null;
+		
+		java.sql.Statement stmt = null;
+		
+		try {
+			conn=ConnectionFactory.getConnection();
+			stmt = conn.createStatement();
+			int seq=2;
+			String sql="insert into contactinfo values('"+seq+"','"
+					+user.getUserid()+"','"+user.getStreet1()+"','"+user.getStreet2()+"','"
+					+user.getCity()+"','"+user.getProvince()+"','"+user.getCountry()+"','"
+					+user.getZip()+"','"+user.getEmail()+"','"+user.getHomephone()+"','"
+					+user.getCellphone()+"','"+user.getOfficephone()+"')";
+			
+			stmt.executeUpdate(sql);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			throw new RuntimeException("error when add userInfo ",e);
+		} finally {
+			try {
+				stmt.close();
+				conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+				
+				throw new RuntimeException("error when add userInfo ",e);
+			}
+		}
 	}
 }

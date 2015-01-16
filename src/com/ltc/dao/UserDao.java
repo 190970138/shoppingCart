@@ -11,4 +11,5 @@ public interface UserDao {
 	public List getAllUsers();
 	public User getUserInfoByID(String userid);
 	public boolean createNewUser(User user);
+	public void addUserInfo(User user);
 }
